@@ -31,11 +31,14 @@ CREATE TABLE invoice_items (
 
 CREATE TABLE treatments (
     id INT PRIMARY KEY,
-    type VARCHAR(50) NOT NULL,
-    name VARCHAR,
-    treatment_id INT,
-    FOREIGN KEY (treatment_id) REFERENCES Treatments(TreatmentsID),
+    type VARCHAR(100),
+    name VARCHAR(100),
+    FOREIGN KEY (id) REFERENCES medical_histories(id)
 );
+
+ALTER TABLE medical_histories
+ADD CONSTRAINT fk_treatment FOREIGN KEY (id)
+REFERENCES treatments(id);
 
 ALTER TABLE medical_histories
 ADD CONSTRAINT patient_fk FOREIGN KEY (patient_id) 
