@@ -29,6 +29,14 @@ CREATE TABLE invoice_items (
     treatment_id INT
 );
 
+CREATE TABLE treatments (
+    id INT PRIMARY KEY,
+    type VARCHAR(50) NOT NULL,
+    name VARCHAR,
+    treatment_id INT,
+    FOREIGN KEY (treatment_id) REFERENCES Treatments(TreatmentsID),
+);
+
 ALTER TABLE medical_histories
 ADD CONSTRAINT patient_fk FOREIGN KEY (patient_id) 
 REFERENCES patients(id);
