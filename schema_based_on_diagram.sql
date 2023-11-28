@@ -28,3 +28,11 @@ CREATE TABLE invoice_items (
     invoice_id INT,
     treatment_id INT
 );
+
+ALTER TABLE medical_histories
+ADD CONSTRAINT patient_fk FOREIGN KEY (patient_id) 
+REFERENCES patients(id);
+
+ALTER TABLE invoice_items
+ADD CONSTRAINT invoice_fk FOREIGN KEY (invoice_id)
+REFERENCES invoices(id);
