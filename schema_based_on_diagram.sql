@@ -47,3 +47,21 @@ REFERENCES patients(id);
 ALTER TABLE invoice_items
 ADD CONSTRAINT invoice_fk FOREIGN KEY (invoice_id)
 REFERENCES invoices(id);
+
+CREATE TABLE medical_history_treatment (
+    medical_history_id INT,
+    treatment_id INT
+);
+ALTER TABLE medical_history_treatment
+ADD CONSTRAINT med_history_id_fk 
+FOREIGN KEY(medical_history_id)
+REFERENCES medical_histories(id);
+
+ALTER TABLE medical_history_treatment
+ADD CONSTRAINT treatment_id_fk 
+FOREIGN KEY(treatment_id)
+REFERENCES treatments(id);
+
+CREATE INDEX index_medical_history_treatment ON medical_history_treatment(treatment_id);
+
+CREATE INDEX index_medical_history_id ON medical_history_treatment(medical_history_id);
